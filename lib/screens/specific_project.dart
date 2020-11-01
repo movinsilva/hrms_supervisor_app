@@ -70,6 +70,12 @@ class SpecificProject extends StatelessWidget {
                                     fontWeight: FontWeight.w600,
                                     fontSize: 17
                                   ),
+                                ),
+                                Spacer(),
+                                IconButton(
+                                  icon: Icon(Icons.edit,
+                                  color: Colors.black54,
+                                  size: 25,),
                                 )
                               ],
                             ),

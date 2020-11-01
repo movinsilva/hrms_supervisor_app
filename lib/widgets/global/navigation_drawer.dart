@@ -11,18 +11,21 @@ class NavigationDrawer extends StatelessWidget {
   var drawer_titles = [
     "Projects",
     "Create Project",
-    "Assign Projects",
+    "My History",
+    "Notices"
   ];
   var drawer_icons = [
     Icons.featured_play_list,
     Icons.create_new_folder,
-    Icons.people,
+    Icons.insert_chart,
+    Icons.notifications_active
   ];
 
   var drawer_routes = [
     "/projects",
     "/createProject",
-    "/assignProjects",
+    "/history",
+    "/notices"
   ];
 
   @override
@@ -164,7 +167,9 @@ class NavigationDrawer extends StatelessWidget {
                           color: Colors.black54,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushReplacementNamed(context, "/login");
+                      },
                     )
                   ],
                 ),

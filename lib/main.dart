@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hrms_supervisor_app/screens/assign_projects.dart';
 import 'package:hrms_supervisor_app/screens/create_project.dart';
+import 'package:hrms_supervisor_app/screens/history.dart';
 import 'package:hrms_supervisor_app/screens/login.dart';
+import 'package:hrms_supervisor_app/screens/notices.dart';
 import 'package:hrms_supervisor_app/screens/projects.dart';
 import 'package:hrms_supervisor_app/screens/specific_project.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
@@ -19,8 +20,9 @@ class MyApp extends StatelessWidget {
         "/login" : (context) => Login(),
         "/projects" : (context) => Projects(),
         "/createProject" : (context) => CreateProject(),
-        "/assignProjects" : (context) => AssignProjects(),
         "/specificProject" : (context) => SpecificProject(),
+        "/notices" : (context) => Notices(),
+        "/history" : (context) => History(),
       },
       home: Login(),
     );
