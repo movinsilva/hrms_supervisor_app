@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hrms_supervisor_app/data/projects_data.dart';
+import 'file:///C:/Users/Movin%20Silva/Desktop/HRMS/hrms_supervisor_app/lib/logic/projects_page.dart';
 import 'package:hrms_supervisor_app/models/projects_model.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';

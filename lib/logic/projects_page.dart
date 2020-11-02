@@ -6,7 +6,6 @@ import 'dart:convert';
 class ProjectData {
 
    static Future<ProjectsModel> getProjects() async {
-     await Future.delayed(Duration(seconds: 1));
      var data = await http.get("http://192.168.1.6:5000/Api/supervisorapi/getprojects");
      var jsonData = json.decode(data.body);
 

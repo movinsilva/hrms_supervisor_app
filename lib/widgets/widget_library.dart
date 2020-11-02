@@ -1,5 +1,7 @@
 export 'package:hrms_supervisor_app/widgets/screens/login/input_form_field.dart';
 export 'package:hrms_supervisor_app/widgets/screens/login/login_box.dart';
+export 'package:hrms_supervisor_app/widgets/screens/login/dialog.dart';
+
 
 
 export 'package:hrms_supervisor_app/widgets/global/default_background.dart';

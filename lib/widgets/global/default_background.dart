@@ -52,7 +52,7 @@ class DefaultBackground extends StatelessWidget {
                     height: size.height*0.06,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Colors.blue[900], Colors.blue[300]]
+                        colors: [Colors.blue[900], Colors.blue[300]] ,
                       ),
                         borderRadius:
                         BorderRadius.only(topRight: Radius.circular(25), bottomRight: Radius.circular(25))),
