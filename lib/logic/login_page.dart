@@ -1,18 +1,28 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hrms_supervisor_app/constants/runtime_constants.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class LoginPage {
+
+  static String name;
+  static String email;
+
   static userSignInAuthentication(
       {@required BuildContext context,
       String password,
       String username}) async {
+
+    email = username.trim();
     var url =
-        "http://192.168.1.6:5000/api/SupervisorApi/LoginSupervisor?username=" +
-            username.trim() +
+        "http://" + RuntimeConstants.ip +":" + RuntimeConstants.port +
+            "/api/windowsservice/validateUserByUsernamePassword?username=" +
+            email +
             "&password=" +
             password;
 
@@ -28,6 +38,9 @@ class LoginPage {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.data != null) {
                       if (snapshot.data) {
+                        resetIsLogin();
+                        RuntimeConstants.name = name;
+                        RuntimeConstants.email = email;
                         return LoginDialog(
                           title: "Successfully Logged in",
                           page: "/projects",
@@ -61,6 +74,17 @@ class LoginPage {
 
     var status = jsonData['success'];
 
+    name = jsonData['username'];
+
     return status;
+  }
+
+
+  //sets the user as logged in by saving in shared preference
+  static Future<void> resetIsLogin() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt("isLogin", 1);
+    await prefs.setString("username", name);
+    await prefs.setString("email", email);
   }
 }

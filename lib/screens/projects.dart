@@ -1,7 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'file:///C:/Users/Movin%20Silva/Desktop/HRMS/hrms_supervisor_app/lib/logic/projects_page.dart';
+import 'package:hrms_supervisor_app/logic/projects_page.dart';
+import 'package:hrms_supervisor_app/logic/specific_project_page.dart';
 import 'package:hrms_supervisor_app/models/projects_model.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -20,24 +21,24 @@ class _ProjectsState extends State<Projects> {
         title: "Current Projects",
         interior: RefreshIndicator(
           key: refreshKey,
-          onRefresh: () {
+          onRefresh: () async {
             setState(() {
-              ProjectData.getProjects();
             });
           },
           child: FutureBuilder(
-            future: ProjectData.getProjects(),
+            future:  ProjectData.getProjects(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if(snapshot.data != null) {
-                ProjectsModel projectmodel = snapshot.data;
+                CurrentProjectsModel projectmodel = snapshot.data;
                 return ListView.builder(
-                    itemCount: projectmodel.projectList.length,
+                    itemCount: projectmodel.projects.length,
                     itemBuilder: (_, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15.0, vertical: 8),
                         child: InkWell(
                           onTap: () =>
+                          SpecificProjectData.subLevelView(projectmodel.projects[index].id);
                               Navigator.of(context).pushNamed("/specificProject"),
                           child: Container(
                             decoration: BoxDecoration(
@@ -56,7 +57,7 @@ class _ProjectsState extends State<Projects> {
                                           .start,
                                       children: <Widget>[
                                         AutoSizeText(
-                                          projectmodel.projectList[index].name,
+                                          projectmodel.projects[index].name,
                                           maxLines: 1,
                                           style: GoogleFonts.poppins(
                                             fontSize: 22,
@@ -75,9 +76,9 @@ class _ProjectsState extends State<Projects> {
                                               ),
                                             ),
                                             AutoSizeText(
-                                              projectmodel.projectList[index].deadline.year.toString() + "-" +
-                                                  projectmodel.projectList[index].deadline.month.toString() + "-" +
-                                                  projectmodel.projectList[index].deadline.day.toString() ,
+                                              projectmodel.projects[index].deadline.year.toString() + "-" +
+                                                  projectmodel.projects[index].deadline.month.toString() + "-" +
+                                                  projectmodel.projects[index].deadline.day.toString() ,
                                               style: GoogleFonts.poppins(
                                                   color: Colors.red,
                                                   fontWeight: FontWeight.w600,
@@ -92,13 +93,13 @@ class _ProjectsState extends State<Projects> {
                                               .spaceBetween,
                                           children: <Widget>[
                                             AutoSizeText(
-                                              "13 sub projects",
+                                              projectmodel.projects[index].subLevelCount.toString() + " sub projects",
                                               style: GoogleFonts.poppins(
                                                   color: Colors.black38
                                               ),
                                             ),
                                             AutoSizeText(
-                                              "6 Users",
+                                              projectmodel.projects[index].userCount.toString() + " Users",
                                               style: GoogleFonts.poppins(
                                                   color: Colors.black38
                                               ),
@@ -115,7 +116,7 @@ class _ProjectsState extends State<Projects> {
                                     padding: const EdgeInsets.only(left: 4.0),
                                     child: CircularStepProgressIndicator(
                                       totalSteps: 100,
-                                      currentStep: 70,
+                                      currentStep: (projectmodel.projects[index].progress*100).toInt(),
                                       stepSize: 17,
                                       selectedColor: Colors.orange,
                                       gradientColor: LinearGradient(
@@ -140,7 +141,7 @@ class _ProjectsState extends State<Projects> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: AutoSizeText(
-                                              "70%",
+                                              (projectmodel.projects[index].progress*100).toInt().toString() + "%",
                                               style: GoogleFonts.poppins(
                                                   fontSize: 15,
                                                   color: Colors.white,

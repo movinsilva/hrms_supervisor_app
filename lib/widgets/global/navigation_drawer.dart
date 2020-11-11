@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms_supervisor_app/constants/runtime_constants.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NavigationDrawer extends StatelessWidget {
   // arrays for the drawer and the image data for the
   // icons
+
   var drawer_titles = [
     "Projects",
     "Create Project",
@@ -89,7 +91,7 @@ class NavigationDrawer extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 28.0),
                                 child: AutoSizeText(
-                                  "Kasun Perera",
+                                    (RuntimeConstants.name!= null)? RuntimeConstants.name : " ",
                                   style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 28,
@@ -168,6 +170,7 @@ class NavigationDrawer extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
+                        resetisLogin();
                         Navigator.pushReplacementNamed(context, "/login");
                       },
                     )
@@ -179,5 +182,10 @@ class NavigationDrawer extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> resetisLogin() async{
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt("isLogin", 0);
   }
 }

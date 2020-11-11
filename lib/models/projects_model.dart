@@ -1,69 +1,69 @@
 // To parse this JSON data, do
 //
-//     final projectsModel = projectsModelFromJson(jsonString);
+//     final currentProjectsModel = currentProjectsModelFromJson(jsonString);
 
 import 'dart:convert';
 
-ProjectsModel projectsModelFromJson(String str) => ProjectsModel.fromJson(json.decode(str));
+CurrentProjectsModel currentProjectsModelFromJson(String str) => CurrentProjectsModel.fromJson(json.decode(str));
 
-String projectsModelToJson(ProjectsModel data) => json.encode(data.toJson());
+String currentProjectsModelToJson(CurrentProjectsModel data) => json.encode(data.toJson());
 
-class ProjectsModel {
-  ProjectsModel({
+class CurrentProjectsModel {
+  CurrentProjectsModel({
     this.success,
-    this.projectList,
+    this.projects,
   });
 
   bool success;
-  List<ProjectList> projectList;
+  List<Project> projects;
 
-  factory ProjectsModel.fromJson(Map<String, dynamic> json) => ProjectsModel(
+  factory CurrentProjectsModel.fromJson(Map<String, dynamic> json) => CurrentProjectsModel(
     success: json["success"],
-    projectList: List<ProjectList>.from(json["projectList"].map((x) => ProjectList.fromJson(x))),
+    projects: List<Project>.from(json["projects"].map((x) => Project.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "success": success,
-    "projectList": List<dynamic>.from(projectList.map((x) => x.toJson())),
+    "projects": List<dynamic>.from(projects.map((x) => x.toJson())),
   };
 }
 
-class ProjectList {
-  ProjectList({
+class Project {
+  Project({
     this.id,
     this.name,
-    this.assignedDateTime,
     this.customer,
     this.deadline,
-    this.remarks,
-    this.subLevels,
+    this.progress,
+    this.subLevelCount,
+    this.userCount,
   });
 
   int id;
   String name;
-  DateTime assignedDateTime;
   String customer;
   DateTime deadline;
-  String remarks;
-  dynamic subLevels;
+  double progress;
+  int subLevelCount;
+  int userCount;
 
-  factory ProjectList.fromJson(Map<String, dynamic> json) => ProjectList(
+  factory Project.fromJson(Map<String, dynamic> json) => Project(
     id: json["id"],
     name: json["name"],
-    assignedDateTime: DateTime.parse(json["assignedDateTime"]),
     customer: json["customer"],
     deadline: DateTime.parse(json["deadline"]),
-    remarks: json["remarks"],
-    subLevels: json["subLevels"],
+    progress: double.parse(json["progress"].toString()),
+    subLevelCount: json["subLevelCount"],
+    userCount: json["userCount"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "name": name,
-    "assignedDateTime": assignedDateTime.toIso8601String(),
     "customer": customer,
     "deadline": deadline.toIso8601String(),
-    "remarks": remarks,
-    "subLevels": subLevels,
+    "progress": progress,
+    "subLevelCount": subLevelCount,
+    "userCount": userCount,
   };
 }

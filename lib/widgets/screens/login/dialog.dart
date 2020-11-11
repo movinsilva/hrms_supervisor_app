@@ -37,7 +37,7 @@ class LoginDialog extends StatelessWidget {
                 if(page == "pop") {
                   Navigator.pop(context);
                 } else{
-                  Navigator.of(context).pushReplacementNamed(page);
+                  Navigator.of(context).pushNamedAndRemoveUntil(page, (route) => false);
                 }
               },
               child: Container(
