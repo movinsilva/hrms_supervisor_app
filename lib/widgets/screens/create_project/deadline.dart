@@ -51,15 +51,15 @@ class _DeadlineState extends State<Deadline> {
                 IconButton(
                   icon: Icon(Icons.date_range,
                   size: 30,),
-                  onPressed: () {
-                    showDatePicker(context: context, initialDate: DateTime.now(),
-                        firstDate: DateTime(2000), lastDate: DateTime(2100))
-                        .then((date) {
-                      setState(() {
-                       _dateTime= date;
-                      });
-                    });
-                  },
+                  // onPressed: () {
+                  //   showDatePicker(context: context, initialDate: DateTime.now(),
+                  //       firstDate: DateTime(2000), lastDate: DateTime(2100))
+                  //       .then((date) {
+                  //     setState(() {
+                  //      _dateTime= date;
+                  //     });
+                  //   });
+                  // },
                 )
               ],
             ),

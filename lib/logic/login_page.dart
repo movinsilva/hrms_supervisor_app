@@ -12,6 +12,7 @@ class LoginPage {
 
   static String name;
   static String email;
+  static String userId;
 
   static userSignInAuthentication(
       {@required BuildContext context,
@@ -21,7 +22,7 @@ class LoginPage {
     email = username.trim();
     var url =
         "http://" + RuntimeConstants.ip +":" + RuntimeConstants.port +
-            "/api/windowsservice/validateUserByUsernamePassword?username=" +
+            "/api/supervisorapi/loginsupervisor?username=" +
             email +
             "&password=" +
             password;
@@ -41,6 +42,7 @@ class LoginPage {
                         resetIsLogin();
                         RuntimeConstants.name = name;
                         RuntimeConstants.email = email;
+                        RuntimeConstants.userId = userId;
                         return LoginDialog(
                           title: "Successfully Logged in",
                           page: "/projects",
@@ -76,6 +78,8 @@ class LoginPage {
 
     name = jsonData['username'];
 
+    userId= jsonData['id'];
+
     return status;
   }
 
@@ -86,5 +90,6 @@ class LoginPage {
     await prefs.setInt("isLogin", 1);
     await prefs.setString("username", name);
     await prefs.setString("email", email);
+    await prefs.setString("userId", userId);
   }
 }

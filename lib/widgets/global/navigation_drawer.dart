@@ -12,7 +12,7 @@ class NavigationDrawer extends StatelessWidget {
 
   var drawer_titles = [
     "Projects",
-    "Create Project",
+    "New Projects",
     "My History",
     "Notices"
   ];
@@ -25,7 +25,7 @@ class NavigationDrawer extends StatelessWidget {
 
   var drawer_routes = [
     "/projects",
-    "/createProject",
+    "/newProjects",
     "/history",
     "/notices"
   ];

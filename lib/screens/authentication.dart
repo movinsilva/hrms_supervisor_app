@@ -10,6 +10,7 @@ class Authentication extends StatefulWidget {
 class _AuthenticationState extends State<Authentication> {
    String namelbl;
    String emaillbl;
+   String idlbl;
 
   @override
   void initState() {
@@ -19,6 +20,7 @@ class _AuthenticationState extends State<Authentication> {
           Navigator.of(context).pushReplacementNamed("/projects");
           RuntimeConstants.name = namelbl;
           RuntimeConstants.email = emaillbl;
+          RuntimeConstants.userId = idlbl;
         } else {
           Navigator.of(context).pushReplacementNamed("/login");
         }
@@ -44,6 +46,8 @@ class _AuthenticationState extends State<Authentication> {
     final int isLogin = prefs.getInt("isLogin");
     namelbl = prefs.getString("username");
     emaillbl = prefs.getString("email");
+    idlbl = prefs.getString("userId");
+
     return isLogin;
 
   }

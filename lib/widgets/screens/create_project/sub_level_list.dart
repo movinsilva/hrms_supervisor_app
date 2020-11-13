@@ -1,16 +1,21 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hrms_supervisor_app/screens/create_project.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
 
 class SubLevelList extends StatefulWidget {
+  List<TextEditingController> _controllers;
+
+  SubLevelList(this._controllers);
+
   @override
   _SubLevelListState createState() => _SubLevelListState();
 }
 
 class _SubLevelListState extends State<SubLevelList> {
 
-  int subLevels = 3;
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,7 @@ class _SubLevelListState extends State<SubLevelList> {
                 size: 32,),
               onPressed: () {
                 setState(() {
-                  subLevels++;
+                  CreateProject.subLevelList++;
                 });
               },
             )
@@ -40,13 +45,14 @@ class _SubLevelListState extends State<SubLevelList> {
         ),
         Container(
           width: size.width,
-          height: size.height*0.1*subLevels,
+          height: size.height*0.1*CreateProject.subLevelList,
           child: ListView.builder(
-              itemCount: subLevels,
+              itemCount: CreateProject.subLevelList,
               itemBuilder: (_,index) {
-                return InputField();
+                widget._controllers.add(new TextEditingController());
+                return InputField(controller: widget._controllers[index],);
               }),
-        )
+        ),
       ],
     );
   }

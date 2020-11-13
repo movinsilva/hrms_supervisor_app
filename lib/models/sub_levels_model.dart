@@ -39,6 +39,7 @@ class Sublevel {
     this.manHours,
     this.progressFraction,
     this.priorityLevel,
+    this.isActive,
     this.user,
   });
 
@@ -51,6 +52,7 @@ class Sublevel {
   int manHours;
   double progressFraction;
   int priorityLevel;
+  bool isActive;
   User user;
 
   factory Sublevel.fromJson(Map<String, dynamic> json) => Sublevel(
@@ -63,6 +65,7 @@ class Sublevel {
     manHours: json["manHours"],
     progressFraction: json["progressFraction"].toDouble(),
     priorityLevel: json["priorityLevel"],
+    isActive: json["isActive"],
     user: User.fromJson(json["user"]),
   );
 
@@ -76,6 +79,7 @@ class Sublevel {
     "manHours": manHours,
     "progressFraction": progressFraction,
     "priorityLevel": priorityLevel,
+    "isActive": isActive,
     "user": user.toJson(),
   };
 }

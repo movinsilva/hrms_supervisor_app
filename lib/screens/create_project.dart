@@ -1,16 +1,19 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hrms_supervisor_app/args/new_project_details.dart';
+import 'package:hrms_supervisor_app/logic/create_project_page.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
 
 class CreateProject extends StatelessWidget {
   // controller for the user id
-  static TextEditingController sd = TextEditingController();
+  List<TextEditingController> controllers = new List();
+   static int subLevelList = 3;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    final NewProjectDetailArgs args = ModalRoute.of(context).settings.arguments;
 
     return DefaultBackground(
       title: "Create Project",
@@ -26,32 +29,124 @@ class CreateProject extends StatelessWidget {
                   fontSize: 22,
                 ),
               ),
-              InputField(),
-              SubLevelList(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: size.width * 0.88,
+                  height: size.height * 0.07,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(14)),
+                      border: Border.all(color: Colors.black12, width: 4)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: AutoSizeText(
+                          args.projectName,
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SubLevelList(controllers),
               AutoSizeText(
                 "Remarks",
                 style: GoogleFonts.poppins(
                   fontSize: 22,
                 ),
               ),
-              InputField(),
-              Deadline(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: size.width * 0.88,
+                  height: size.height * 0.07,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(14)),
+                      border: Border.all(color: Colors.black12, width: 4)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: AutoSizeText(
+                          args.remark,
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              AutoSizeText(
+                "Deadline",
+                style: GoogleFonts.poppins(
+                  fontSize: 22,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: size.width * 0.4,
+                  height: size.height * 0.07,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(14)),
+                      border: Border.all(color: Colors.black12, width: 4)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: AutoSizeText(
+                            args.deadline.year.toString() +
+                                "-" +
+                                args.deadline.month.toString() +
+                                "-" +
+                                args.deadline.day.toString(),
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                        Icon(Icons.date_range),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 35,
               ),
               Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.lightGreen,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal:25.0,vertical: 5),
-                    child: AutoSizeText(
-                      "Confirm",
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 20,
+                child: InkWell(
+                  onTap: () {
+                    CreateProjectData.submitSubLevels();
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.lightGreen,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 25.0, vertical: 5),
+                      child: AutoSizeText(
+                        "Confirm",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ),

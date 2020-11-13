@@ -3,6 +3,7 @@ import 'package:hrms_supervisor_app/screens/authentication.dart';
 import 'package:hrms_supervisor_app/screens/create_project.dart';
 import 'package:hrms_supervisor_app/screens/history.dart';
 import 'package:hrms_supervisor_app/screens/login.dart';
+import 'package:hrms_supervisor_app/screens/new_projects.dart';
 import 'package:hrms_supervisor_app/screens/notices.dart';
 import 'package:hrms_supervisor_app/screens/projects.dart';
 import 'package:hrms_supervisor_app/screens/specific_project.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         "/notices" : (context) => Notices(),
         "/history" : (context) => History(),
         "/authentication" : (context) => Authentication(),
+        "/newProjects" : (context) => NewProjects(),
       },
       home: Authentication(),
     );
