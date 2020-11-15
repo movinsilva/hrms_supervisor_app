@@ -1,14 +1,17 @@
+import 'dart:collection';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms_supervisor_app/args/new_project_details.dart';
 import 'package:hrms_supervisor_app/logic/create_project_page.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
+import 'dart:convert';
 
 class CreateProject extends StatelessWidget {
   // controller for the user id
-  List<TextEditingController> controllers = new List();
-   static int subLevelList = 3;
+  HashMap<int, TextEditingController> controllers = new HashMap();
+  static int subLevelList = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +98,7 @@ class CreateProject extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  width: size.width * 0.4,
+                  width: size.width * 0.5,
                   height: size.height * 0.07,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -131,7 +134,26 @@ class CreateProject extends StatelessWidget {
               Center(
                 child: InkWell(
                   onTap: () {
-                    CreateProjectData.submitSubLevels();
+                    var sublevelnamelist = List<String>();
+
+                    for (int i = 0; i < controllers.length; i++) {
+                      sublevelnamelist.add(controllers[i].text.toString());
+                    }
+                    var map = {
+                      "ID": args.projectId,
+                      "SubLevelNameList": sublevelnamelist
+                    };
+                    var i = jsonEncode(map);
+                    CreateProjectData.submitSubLevels(i).then((value) {
+                      if (value) {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            "/projects", (route) => false);
+                      } else {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text("Couldn't create sub levels"),
+                        ));
+                      }
+                    });
                   },
                   child: Container(
                     decoration: BoxDecoration(

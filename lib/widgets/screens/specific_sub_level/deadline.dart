@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hrms_supervisor_app/screens/specific_sub_level.dart';
+import 'package:hrms_supervisor_app/widgets/widget_library.dart';
 
 class Deadline extends StatefulWidget {
   @override
@@ -9,7 +11,7 @@ class Deadline extends StatefulWidget {
 
 class _DeadlineState extends State<Deadline> {
 
-  DateTime _dateTime;
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,8 @@ class _DeadlineState extends State<Deadline> {
               fontSize: 22,
             ),
           ),
-
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Container(
             width: size.width*0.65,
             height: 50,
@@ -40,9 +41,8 @@ class _DeadlineState extends State<Deadline> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal:8.0),
                   child: AutoSizeText(
-                      (_dateTime == null) ? "Add Date" :
-                    _dateTime.year.toString() + "-" + _dateTime.month.toString()
-                        + "-" + _dateTime.day.toString(),
+                    SpecificSubLevel.dateTime?.year.toString() + "-" + SpecificSubLevel.dateTime?.month.toString()
+                        + "-" + SpecificSubLevel.dateTime?.day.toString(),
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                     ),
@@ -51,15 +51,15 @@ class _DeadlineState extends State<Deadline> {
                 IconButton(
                   icon: Icon(Icons.date_range,
                   size: 30,),
-                  // onPressed: () {
-                  //   showDatePicker(context: context, initialDate: DateTime.now(),
-                  //       firstDate: DateTime(2000), lastDate: DateTime(2100))
-                  //       .then((date) {
-                  //     setState(() {
-                  //      _dateTime= date;
-                  //     });
-                  //   });
-                  // },
+                  onPressed: () {
+                    showDatePicker(context: context, initialDate: DateTime.now(),
+                        firstDate: DateTime(2000), lastDate: DateTime(2100))
+                        .then((date) {
+                      setState(() {
+                        SpecificSubLevel.dateTime= date;
+                      });
+                    });
+                  },
                 )
               ],
             ),

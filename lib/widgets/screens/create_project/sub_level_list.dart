@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,7 +7,7 @@ import 'package:hrms_supervisor_app/screens/create_project.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
 
 class SubLevelList extends StatefulWidget {
-  List<TextEditingController> _controllers;
+  HashMap<int, TextEditingController> _controllers;
 
   SubLevelList(this._controllers);
 
@@ -49,7 +51,7 @@ class _SubLevelListState extends State<SubLevelList> {
           child: ListView.builder(
               itemCount: CreateProject.subLevelList,
               itemBuilder: (_,index) {
-                widget._controllers.add(new TextEditingController());
+               widget._controllers.putIfAbsent(index, () => new TextEditingController());
                 return InputField(controller: widget._controllers[index],);
               }),
         ),

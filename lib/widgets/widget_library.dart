@@ -10,5 +10,6 @@ export 'package:hrms_supervisor_app/widgets/global/navigation_drawer.dart';
 
 export 'package:hrms_supervisor_app/widgets/screens/create_project/input_field.dart';
 export 'package:hrms_supervisor_app/widgets/screens/create_project/sub_level_list.dart';
-export 'package:hrms_supervisor_app/widgets/screens/create_project/deadline.dart';
 
+export 'package:hrms_supervisor_app/widgets/screens/specific_sub_level/deadline.dart';
+export 'package:hrms_supervisor_app/widgets/screens/specific_sub_level/input_form_field_sizes.dart';

@@ -6,7 +6,9 @@ import 'package:hrms_supervisor_app/screens/login.dart';
 import 'package:hrms_supervisor_app/screens/new_projects.dart';
 import 'package:hrms_supervisor_app/screens/notices.dart';
 import 'package:hrms_supervisor_app/screens/projects.dart';
+import 'package:hrms_supervisor_app/screens/select_user.dart';
 import 'package:hrms_supervisor_app/screens/specific_project.dart';
+import 'package:hrms_supervisor_app/screens/specific_sub_level.dart';
 import 'package:hrms_supervisor_app/widgets/widget_library.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
         "/history" : (context) => History(),
         "/authentication" : (context) => Authentication(),
         "/newProjects" : (context) => NewProjects(),
+        "/selectUser" : (context) => SelectUser(),
+        "/specificSubLevel" : (context) => SpecificSubLevel(),
       },
       home: Authentication(),
     );

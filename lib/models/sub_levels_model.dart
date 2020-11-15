@@ -66,7 +66,7 @@ class Sublevel {
     progressFraction: json["progressFraction"].toDouble(),
     priorityLevel: json["priorityLevel"],
     isActive: json["isActive"],
-    user: User.fromJson(json["user"]),
+    user:(json["userID"] == null)? User() : User.fromJson(json["user"])  ,
   );
 
   Map<String, dynamic> toJson() => {
@@ -104,12 +104,12 @@ class User {
 
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-    name: json["name"],
-    id: json["id"],
-    userName: json["userName"],
-    email: json["email"],
-    phoneNumber: json["phoneNumber"],
-    phoneNumberConfirmed: json["phoneNumberConfirmed"],
+    name: json["name"] ?? "",
+    id: json["id"]  ?? "",
+    userName: json["userName"]  ?? "",
+    email: json["email"]  ?? "",
+    phoneNumber: json["phoneNumber"]  ?? "",
+    phoneNumberConfirmed: json["phoneNumberConfirmed"] ?? "",
 
   );
 

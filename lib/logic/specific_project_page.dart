@@ -28,9 +28,5 @@ class SpecificProjectData {
     var jsondata = json.decode(data.body);
     var status = jsondata['success'];
     return status;
-
-
   }
-
-
 }
