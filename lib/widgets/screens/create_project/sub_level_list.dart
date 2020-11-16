@@ -31,12 +31,12 @@ class _SubLevelListState extends State<SubLevelList> {
             AutoSizeText(
               "Project Sub Levels",
               style: GoogleFonts.poppins(
-                fontSize: 22,
+                fontSize: 19,
               ),
             ),
             IconButton(
               icon: Icon(Icons.add_circle,
-                size: 32,),
+                size: 30,),
               onPressed: () {
                 setState(() {
                   CreateProject.subLevelList++;
@@ -47,7 +47,7 @@ class _SubLevelListState extends State<SubLevelList> {
         ),
         Container(
           width: size.width,
-          height: size.height*0.1*CreateProject.subLevelList,
+          height: size.height*0.095*CreateProject.subLevelList,
           child: ListView.builder(
               itemCount: CreateProject.subLevelList,
               itemBuilder: (_,index) {

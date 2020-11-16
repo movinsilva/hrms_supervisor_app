@@ -13,12 +13,14 @@ class NavigationDrawer extends StatelessWidget {
   var drawer_titles = [
     "Projects",
     "New Projects",
+    "Tasks",
     "My History",
     "Notices"
   ];
   var drawer_icons = [
     Icons.featured_play_list,
     Icons.create_new_folder,
+    Icons.library_add_check,
     Icons.insert_chart,
     Icons.notifications_active
   ];
@@ -26,6 +28,7 @@ class NavigationDrawer extends StatelessWidget {
   var drawer_routes = [
     "/projects",
     "/newProjects",
+    "/tasks",
     "/history",
     "/notices"
   ];
@@ -94,7 +97,7 @@ class NavigationDrawer extends StatelessWidget {
                                     (RuntimeConstants.name!= null)? RuntimeConstants.name : " ",
                                   style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 28,
+                                      fontSize: 25,
                                       color: Colors.white),
                                   maxLines: 2,
                                 ),
@@ -163,7 +166,7 @@ class NavigationDrawer extends StatelessWidget {
                       title: Text(
                         "Log out",
                         style: GoogleFonts.poppins(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 1.2,
                           color: Colors.black54,

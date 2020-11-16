@@ -24,6 +24,7 @@ class InputFormFieldSizes extends StatelessWidget {
       keyboardType: keyboardType,
       controller: controller,
       decoration: InputDecoration(
+        contentPadding: new EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
                 color: Colors.blue[200],

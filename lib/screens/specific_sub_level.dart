@@ -36,14 +36,14 @@ class SpecificSubLevel extends StatelessWidget {
               AutoSizeText(
                 "User",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: 19,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical:8.0),
                 child: Container(
                   width: size.width * 0.93,
-                  height: size.height * 0.07,
+                  height: size.height * 0.06,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(14)),
                       border: Border.all(color: Colors.black12, width: 4)),
@@ -56,7 +56,7 @@ class SpecificSubLevel extends StatelessWidget {
                           args.userName,
                           style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -67,7 +67,7 @@ class SpecificSubLevel extends StatelessWidget {
               AutoSizeText(
                 "Remarks",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: 19,
                 ),
               ),
               InputFormFieldSizes(maxLines: 3, controller: remarksController,),
@@ -75,7 +75,7 @@ class SpecificSubLevel extends StatelessWidget {
               AutoSizeText(
                 "Man Hours",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: 19,
                 ),
               ),
               Padding(
@@ -85,7 +85,7 @@ class SpecificSubLevel extends StatelessWidget {
               AutoSizeText(
                 "Priority Level",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: 19,
                 ),
               ),
               Padding(
@@ -117,7 +117,7 @@ class SpecificSubLevel extends StatelessWidget {
                     SpecificSubLevelData.assignUser(i).then((value) {
                       if(value){
                         SmsSender sender = new SmsSender();
-                        sender.sendSms(new SmsMessage(args.phoneNo, args.subLvlName + " of a project has been assigned to you, Deadline is " + formatted));
+                        sender.sendSms(new SmsMessage(args.phoneNo, args.subLvlName + " Part of a project has been assigned to you, Deadline is " + formatted));
 
                         priorityLvlController.text = "";
                         manHoursController.text = "";
@@ -130,11 +130,6 @@ class SpecificSubLevel extends StatelessWidget {
                         ));
                       }
                     });
-
-
-
-
-
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -157,7 +152,7 @@ class SpecificSubLevel extends StatelessWidget {
               ),
               SizedBox(
                 height: 25,
-              )
+              ),
             ],
           ),
         ),

@@ -55,7 +55,7 @@ class SelectUser extends StatelessWidget {
                                       flex: 2,
                                       child: CachedNetworkImage(
                                         width: size.height * 0.05,
-                                        height: size.height * 0.12,
+                                        height: size.height * 0.05,
                                         imageUrl: "http://35.247.188.34/client1.png",
                                         placeholder: (context, url) =>
                                             CircularProgressIndicator(),

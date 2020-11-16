@@ -36,7 +36,7 @@ class _HistoryState extends State<History> {
                       itemCount: model.projects.length,
                       itemBuilder: (context, index) {
                         return Container(
-                          margin: EdgeInsets.all(15),
+                          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                           decoration: BoxDecoration(
                               color: Colors.grey[200],
                               borderRadius:
@@ -48,10 +48,10 @@ class _HistoryState extends State<History> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 AutoSizeText(
-                                  model.projects[index].name,
+                                  model.projects[index].name.toString(),
                                   maxLines: 1,
                                   style: GoogleFonts.poppins(
-                                    fontSize: 22,
+                                    fontSize: 19,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.black87,
                                   ),
@@ -68,6 +68,7 @@ class _HistoryState extends State<History> {
                                           .toString(),
                                   style: GoogleFonts.poppins(
                                     color: Colors.orange,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),

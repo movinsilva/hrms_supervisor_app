@@ -12,6 +12,7 @@ class InputField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
+            contentPadding: new EdgeInsets.symmetric(vertical: 11.0, horizontal: 10.0),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   width: 4,

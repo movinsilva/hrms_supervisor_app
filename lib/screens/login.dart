@@ -21,16 +21,16 @@ class Login extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 130,
+                  height: size.height*0.16,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:50.0),
+                  padding: const EdgeInsets.symmetric(horizontal:5.0),
                   child: Image(
-                    image: AssetImage("assets/company_img.png"),
+                    image: AssetImage("assets/logo_img.png"),
                   ),
                 ),
                 SizedBox(
-                  height: 80,
+                  height: size.height*0.1,
                 ),
                 LoginBox(),
               ],

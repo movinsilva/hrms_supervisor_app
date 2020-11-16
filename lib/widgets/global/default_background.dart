@@ -22,7 +22,7 @@ class DefaultBackground extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image(
-            image: AssetImage("assets/company_img.png"),
+            image: AssetImage("assets/logo_img.png"),
             height: 30,
           ),
         ),

@@ -14,8 +14,7 @@ class Projects extends StatefulWidget {
 }
 
 class _ProjectsState extends State<Projects> {
-  GlobalKey<RefreshIndicatorState> refreshKey =
-      GlobalKey<RefreshIndicatorState>();
+  GlobalKey<RefreshIndicatorState> refreshKey = GlobalKey<RefreshIndicatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,49 +31,38 @@ class _ProjectsState extends State<Projects> {
             future: ProjectData.getProjects(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                if(snapshot.data != null) {
+                if (snapshot.data != null) {
                   CurrentProjectsModel projectmodel = snapshot.data;
-                  if(projectmodel.projects.length>0) {
+                  if (projectmodel.projects.length > 0) {
                     return ListView.builder(
                         itemCount: projectmodel.projects.length,
                         itemBuilder: (_, index) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15.0, vertical: 8),
+                            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
                             child: InkWell(
                               onTap: () =>
-                              // SpecificProjectData.subLevelView(projectmodel.projects[index].id);
-                              Navigator.of(context).pushNamed(
-                                  "/specificProject",
-                                  arguments: ProjectDetailArgs(
-                                      projectmodel.projects[index].name,
-                                      projectmodel.projects[index].id)),
+                                  // SpecificProjectData.subLevelView(projectmodel.projects[index].id);
+                                  Navigator.of(context)
+                                      .pushNamed("/specificProject", arguments: ProjectDetailArgs(projectmodel.projects[index].name, projectmodel.projects[index].id)),
                               child: Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.grey[200],
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(15))),
+                                decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.all(Radius.circular(15))),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.symmetric(horizontal:8.0, vertical: 3),
                                   child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Expanded(
                                           flex: 5,
                                           child: Padding(
-                                            padding:
-                                            const EdgeInsets.only(left: 8.0),
+                                            padding: const EdgeInsets.only(left: 8.0),
                                             child: Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: <Widget>[
                                                 AutoSizeText(
-                                                  projectmodel.projects[index]
-                                                      .name,
+                                                  projectmodel.projects[index].name,
                                                   maxLines: 1,
                                                   style: GoogleFonts.poppins(
-                                                    fontSize: 22,
+                                                    fontSize: 19,
                                                     fontWeight: FontWeight.w600,
                                                     color: Colors.black87,
                                                   ),
@@ -83,36 +71,15 @@ class _ProjectsState extends State<Projects> {
                                                   children: <Widget>[
                                                     AutoSizeText(
                                                       "Deadline : ",
-                                                      style: GoogleFonts
-                                                          .poppins(
-                                                          fontSize: 18,
-                                                          color: Colors.black54,
-                                                          fontWeight:
-                                                          FontWeight.w600),
+                                                      style: GoogleFonts.poppins(fontSize: 15, color: Colors.black54, fontWeight: FontWeight.w600),
                                                     ),
                                                     AutoSizeText(
-                                                      projectmodel
-                                                          .projects[index]
-                                                          .deadline.year
-                                                          .toString() +
+                                                      projectmodel.projects[index].deadline.year.toString() +
                                                           "-" +
-                                                          projectmodel
-                                                              .projects[index]
-                                                              .deadline
-                                                              .month
-                                                              .toString() +
+                                                          projectmodel.projects[index].deadline.month.toString() +
                                                           "-" +
-                                                          projectmodel
-                                                              .projects[index]
-                                                              .deadline
-                                                              .day
-                                                              .toString(),
-                                                      style: GoogleFonts
-                                                          .poppins(
-                                                          color: Colors.red,
-                                                          fontWeight:
-                                                          FontWeight.w600,
-                                                          fontSize: 17),
+                                                          projectmodel.projects[index].deadline.day.toString(),
+                                                      style: GoogleFonts.poppins(color: Colors.red, fontWeight: FontWeight.w600, fontSize: 14),
                                                     )
                                                   ],
                                                 ),
@@ -120,31 +87,15 @@ class _ProjectsState extends State<Projects> {
                                                   height: 4,
                                                 ),
                                                 Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: <Widget>[
                                                     AutoSizeText(
-                                                      projectmodel
-                                                          .projects[index]
-                                                          .subLevelCount
-                                                          .toString() +
-                                                          " sub projects",
-                                                      style: GoogleFonts
-                                                          .poppins(
-                                                          color: Colors
-                                                              .black38),
+                                                      projectmodel.projects[index].subLevelCount.toString() + " sub projects",
+                                                      style: GoogleFonts.poppins(color: Colors.black38),
                                                     ),
                                                     AutoSizeText(
-                                                      projectmodel
-                                                          .projects[index]
-                                                          .userCount
-                                                          .toString() +
-                                                          " Users",
-                                                      style: GoogleFonts
-                                                          .poppins(
-                                                          color: Colors
-                                                              .black38),
+                                                      projectmodel.projects[index].userCount.toString() + " Users",
+                                                      style: GoogleFonts.poppins(color: Colors.black38),
                                                     )
                                                   ],
                                                 ),
@@ -157,51 +108,29 @@ class _ProjectsState extends State<Projects> {
                                       Expanded(
                                         flex: 2,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 4.0),
+                                          padding: const EdgeInsets.only(left: 4.0),
                                           child: CircularStepProgressIndicator(
                                             totalSteps: 100,
-                                            currentStep: (projectmodel
-                                                .projects[index].progress *
-                                                100)
-                                                .toInt(),
+                                            currentStep: (projectmodel.projects[index].progress * 100).toInt(),
                                             stepSize: 17,
                                             selectedColor: Colors.orange,
                                             gradientColor: LinearGradient(
-                                              colors: [
-                                                Colors.orange[200],
-                                                Colors.deepOrange[400]
-                                              ],
+                                              colors: [Colors.orange[200], Colors.deepOrange[400]],
                                             ),
                                             unselectedColor: Colors.orange[200],
                                             padding: 0,
-                                            width: 50,
+                                            width: 35,
                                             height: 100,
                                             selectedStepSize: 10,
                                             unselectedStepSize: 5,
                                             child: Center(
                                               child: Container(
-                                                decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius
-                                                        .all(
-                                                        Radius.circular(100)),
-                                                    color: Colors.orange),
+                                                decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(100)), color: Colors.orange),
                                                 child: Padding(
-                                                  padding:
-                                                  const EdgeInsets.all(8.0),
+                                                  padding: const EdgeInsets.all(8.0),
                                                   child: AutoSizeText(
-                                                    (projectmodel
-                                                        .projects[index]
-                                                        .progress *
-                                                        100)
-                                                        .toInt()
-                                                        .toString() +
-                                                        "%",
-                                                    style: GoogleFonts.poppins(
-                                                        fontSize: 15,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                        FontWeight.w600),
+                                                    (projectmodel.projects[index].progress * 100).toInt().toString() + "%",
+                                                    style: GoogleFonts.poppins(fontSize: 15, color: Colors.white, fontWeight: FontWeight.w600),
                                                   ),
                                                 ),
                                               ),
@@ -217,10 +146,10 @@ class _ProjectsState extends State<Projects> {
                             ),
                           );
                         });
-                  } else{
+                  } else {
                     return SingleChildScrollView(
                       child: Container(
-                        height: size.height*0.795,
+                        height: size.height * 0.795,
                         child: Center(
                           child: AutoSizeText(
                             "0 current projects\n Pull to refresh",
@@ -233,7 +162,7 @@ class _ProjectsState extends State<Projects> {
                 } else {
                   return SingleChildScrollView(
                     child: Container(
-                      height: size.height*0.795,
+                      height: size.height * 0.795,
                       child: Center(
                         child: AutoSizeText(
                           "No Data \n pull to refresh",

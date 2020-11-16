@@ -22,14 +22,14 @@ class _DeadlineState extends State<Deadline> {
         AutoSizeText(
             "Deadline",
             style: GoogleFonts.poppins(
-              fontSize: 22,
+              fontSize: 19,
             ),
           ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Container(
             width: size.width*0.65,
-            height: 50,
+            height: size.height*0.06,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(14)),
               border: Border.all(color: Colors.black12,
@@ -44,13 +44,13 @@ class _DeadlineState extends State<Deadline> {
                     SpecificSubLevel.dateTime?.year.toString() + "-" + SpecificSubLevel.dateTime?.month.toString()
                         + "-" + SpecificSubLevel.dateTime?.day.toString(),
                     style: GoogleFonts.poppins(
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                 ),
                 IconButton(
                   icon: Icon(Icons.date_range,
-                  size: 30,),
+                  size: 22,),
                   onPressed: () {
                     showDatePicker(context: context, initialDate: DateTime.now(),
                         firstDate: DateTime(2000), lastDate: DateTime(2100))

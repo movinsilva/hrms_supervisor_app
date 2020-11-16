@@ -62,7 +62,7 @@ class _NewProjectsState extends State<NewProjects> {
                                     model.upcomingProjects[index].name,
                                     maxLines: 1,
                                     style: GoogleFonts.poppins(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.black87,
                                     ),
@@ -76,7 +76,7 @@ class _NewProjectsState extends State<NewProjects> {
                                       AutoSizeText(
                                         "Deadline : ",
                                         style: GoogleFonts.poppins(
-                                            fontSize: 18,
+                                            fontSize: 16,
                                             color: Colors.black54,
                                             fontWeight:
                                             FontWeight.w600),
@@ -101,7 +101,7 @@ class _NewProjectsState extends State<NewProjects> {
                                             color: Colors.red,
                                             fontWeight:
                                             FontWeight.w600,
-                                            fontSize: 17),
+                                            fontSize: 15),
                                       )
                                     ],
                                   )

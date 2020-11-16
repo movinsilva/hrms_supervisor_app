@@ -29,17 +29,15 @@ class CreateProject extends StatelessWidget {
               AutoSizeText(
                 "Project Name",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: 19,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   width: size.width * 0.88,
-                  height: size.height * 0.07,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(14)),
-                      border: Border.all(color: Colors.black12, width: 4)),
+                  height: size.height * 0.06,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(14)), border: Border.all(color: Colors.black12, width: 4)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -49,7 +47,7 @@ class CreateProject extends StatelessWidget {
                           args.projectName,
                           style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -61,27 +59,25 @@ class CreateProject extends StatelessWidget {
               AutoSizeText(
                 "Remarks",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: 19,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   width: size.width * 0.88,
-                  height: size.height * 0.07,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(14)),
-                      border: Border.all(color: Colors.black12, width: 4)),
+                  height: size.height * 0.06,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(14)), border: Border.all(color: Colors.black12, width: 4)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: AutoSizeText(
-                          args.remark,
+                          (args.remark != null) ? args.remark : "",
                           style: GoogleFonts.poppins(
                             fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                            fontSize: 16,
                           ),
                         ),
                       ),
@@ -92,37 +88,32 @@ class CreateProject extends StatelessWidget {
               AutoSizeText(
                 "Deadline",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: 19,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   width: size.width * 0.5,
-                  height: size.height * 0.07,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(14)),
-                      border: Border.all(color: Colors.black12, width: 4)),
+                  height: size.height * 0.06,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(14)), border: Border.all(color: Colors.black12, width: 4)),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: AutoSizeText(
-                            args.deadline.year.toString() +
-                                "-" +
-                                args.deadline.month.toString() +
-                                "-" +
-                                args.deadline.day.toString(),
+                            args.deadline.year.toString() + "-" + args.deadline.month.toString() + "-" + args.deadline.day.toString(),
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w600,
-                              fontSize: 18,
+                              fontSize: 16,
                             ),
                           ),
                         ),
-                        Icon(Icons.date_range),
+                        Icon(Icons.date_range,
+                        size: 20,),
                       ],
                     ),
                   ),
@@ -139,15 +130,12 @@ class CreateProject extends StatelessWidget {
                     for (int i = 0; i < controllers.length; i++) {
                       sublevelnamelist.add(controllers[i].text.toString());
                     }
-                    var map = {
-                      "ID": args.projectId,
-                      "SubLevelNameList": sublevelnamelist
-                    };
+                    var map = {"ID": args.projectId, "SubLevelNameList": sublevelnamelist};
                     var i = jsonEncode(map);
                     CreateProjectData.submitSubLevels(i).then((value) {
                       if (value) {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                            "/projects", (route) => false);
+                        Navigator.of(context).pushNamedAndRemoveUntil("/projects", (route) => false);
+                        subLevelList = 3;
                       } else {
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: Text("Couldn't create sub levels"),
@@ -161,8 +149,7 @@ class CreateProject extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25.0, vertical: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5),
                       child: AutoSizeText(
                         "Confirm",
                         style: GoogleFonts.poppins(

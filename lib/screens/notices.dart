@@ -9,7 +9,7 @@ class Notices extends StatelessWidget {
     return DefaultBackground(
       title: "Notices",
       interior:  ListView.builder(
-        itemCount: 3,
+        itemCount: 0,
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.all(15),
@@ -26,10 +26,11 @@ class Notices extends StatelessWidget {
                     "Special meeting on 11.12.2020 about Payagala Project",
                     style: GoogleFonts.poppins(
                       color: Colors.black87,
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                  SizedBox(height: 6,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
@@ -37,6 +38,7 @@ class Notices extends StatelessWidget {
                         "Sup. Shehan Perera",
                         style: GoogleFonts.poppins(
                           color: Colors.orange,
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                         ),
                       )

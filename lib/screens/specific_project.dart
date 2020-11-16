@@ -49,7 +49,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                   child: Container(
                                     decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.all(Radius.circular(15))),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(6.0),
                                       child: Column(
                                         children: <Widget>[
                                           Row(
@@ -66,7 +66,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                           (model.sublevels[index].name != null) ? model.sublevels[index].name : "null",
                                                           maxLines: 1,
                                                           style: GoogleFonts.poppins(
-                                                            fontSize: 22,
+                                                            fontSize: 18,
                                                             fontWeight: FontWeight.w600,
                                                             color: Colors.black87,
                                                           ),
@@ -74,21 +74,20 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                         Visibility(
                                                           visible: (model.sublevels[index].user.name != null),
                                                           maintainState: true,
+                                                          maintainAnimation: true,
+                                                          maintainSize: true,
                                                           child: Row(
                                                             mainAxisAlignment: MainAxisAlignment.end,
                                                             children: <Widget>[
                                                               AutoSizeText(
                                                                 (model.sublevels[index].user.name != null) ? model.sublevels[index].user.name : "null",
                                                                 style: GoogleFonts.poppins(
-                                                                  fontSize: 16,
+                                                                  fontSize: 14,
                                                                   color: Colors.black54,
                                                                 ),
                                                               ),
                                                             ],
                                                           ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 4,
                                                         ),
                                                         Visibility(
                                                           visible: (model.sublevels[index].user.name != null),
@@ -103,7 +102,23 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                                 style: GoogleFonts.poppins(
                                                                     color: (model.sublevels[index].isActive) ? Colors.lightGreen[500] : Colors.lightGreen[200],
                                                                     fontWeight: FontWeight.w600,
-                                                                    fontSize: 17),
+                                                                    fontSize: 14),
+                                                              ),
+                                                              SizedBox(width: 5,),
+
+                                                              Container(
+                                                                height: 25,
+                                                                width: 25,
+                                                                decoration: BoxDecoration(
+                                                                  border: Border.all(color: Colors.green),
+                                                                  borderRadius: BorderRadius.all(Radius.circular(40)),
+                                                                ),
+                                                                child: Center(
+                                                                  child: Text(model.sublevels[index].priorityLevel.toString(),
+                                                                  style: GoogleFonts.poppins(
+                                                                    color: Colors.green
+                                                                  ),),
+                                                                ),
                                                               ),
                                                               Spacer(),
                                                               IconButton(
@@ -127,7 +142,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                               children: [
                                                                 AutoSizeText("Add User   ",
                                                                   style: GoogleFonts.poppins(
-                                                                      fontSize: 16,
+                                                                      fontSize: 14,
                                                                       fontWeight: FontWeight.w500,
                                                                       color: Colors.black54
                                                                   ),
@@ -135,7 +150,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                                 Icon(
                                                                   Icons.edit,
                                                                   color: Colors.black54,
-                                                                  size: 25,
+                                                                  size: 22,
                                                                 ),
                                                               ],
                                                             ),
@@ -147,7 +162,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                               Expanded(
                                                 flex: 2,
                                                 child: Padding(
-                                                  padding: const EdgeInsets.only(left: 8.0),
+                                                  padding: const EdgeInsets.only(left: 6.0),
                                                   child: CircularStepProgressIndicator(
                                                     totalSteps: 100,
                                                     currentStep: (model.sublevels[index].progressFraction * 100).toInt(),
@@ -158,7 +173,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                     ),
                                                     unselectedColor: Colors.orange[200],
                                                     padding: 0,
-                                                    width: 40,
+                                                    width: 35,
                                                     height: 100,
                                                     selectedStepSize: 10,
                                                     unselectedStepSize: 5,
@@ -181,7 +196,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                             ],
                                           ),
                                           SizedBox(
-                                            height: 6,
+                                            height: 2,
                                           ),
                                           Row(
                                             children: <Widget>[
@@ -198,6 +213,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                         child: Icon(
                                                           Icons.call,
                                                           color: Colors.black87,
+                                                          size: 20,
                                                         ),
                                                       ),
                                                     ),
@@ -217,6 +233,7 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                 style: GoogleFonts.poppins(
                                                   color: Colors.black54,
                                                   fontWeight: FontWeight.w500,
+                                                  fontSize: 13
                                                 ),
                                               ),
                                               AutoSizeText(
@@ -228,12 +245,13 @@ class _SpecificProjectState extends State<SpecificProject> {
                                                 style: GoogleFonts.poppins(
                                                   color: Colors.red,
                                                   fontWeight: FontWeight.w500,
+                                                  fontSize: 13
                                                 ),
                                               ),
                                             ],
                                           ),
                                           SizedBox(
-                                            height: 6,
+                                            height: 3,
                                           )
                                         ],
                                       ),
