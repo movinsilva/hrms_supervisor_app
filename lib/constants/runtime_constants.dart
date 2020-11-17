@@ -10,6 +10,6 @@ class RuntimeConstants{
   static String userId;
 
   static String ip = "34.87.33.49" ;
-  static String port = "8001" ;
+  static String port = "80" ;
 
 }

@@ -33,6 +33,7 @@ class Login extends StatelessWidget {
                   height: size.height*0.1,
                 ),
                 LoginBox(),
+                Text("Version: 1.0.0"),
               ],
             ),
           ),
