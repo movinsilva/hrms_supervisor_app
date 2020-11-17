@@ -9,7 +9,7 @@ class RuntimeConstants{
   static String email;
   static String userId;
 
-  static String ip = "34.87.33.49" ;
+  static String ip = "admin.haritha.lk" ;
   static String port = "80" ;
 
 }
